@@ -1,0 +1,266 @@
+<html>
+    <head>
+        <title>Hive Mind by Go1den</title>
+        <link rel="stylesheet" href="css/w3.css">
+        <link rel="stylesheet" href="css/hivemind.css">
+        <link rel="icon" href="https://go1den.github.io/hivemind/images/tiles/gold.png">
+        <meta property="og:url"           content="https://go1den.github.io/hivemind" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Hive Mind" />
+        <meta property="og:description"   content="Find out what the buzz is all about." />
+        <meta property="og:image"         content="https://go1den.github.io/hivemind/images/share/hivemind.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@GoldenSRL" />
+        <meta name="twitter:title" content="Hive Mind" />
+        <meta name="twitter:description" content="Find out what the buzz is all about." />
+        <meta name="twitter:image" content="https://go1den.github.io/hivemind/images/share/hivemind.png" />
+    </head>
+    <body>
+        <br>
+        <div class="w3-container offAtStart" style="height:50%">
+            <table>
+                <tr>
+                    <td>
+                        <table class="bordered">
+                            <caption><strong>Rank</strong></caption>
+                            <tr>
+                                <td class="text" id="rank"><strong>Beeswax</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="bordered">
+                            <caption><strong>Points to Next Rank</strong></caption>
+                            <tr>
+                                <td class="text progressBar" id="toNextRank"><strong>0</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="bordered">
+                            <caption><strong>Score</strong></caption>
+                            <tr>
+                                <td class="text progressBar" id="score"><strong>0 of 0</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="bordered">
+                            <caption><strong>Words Found</strong></caption>
+                            <tr>
+                                <td class="text progressBar" id="threshold"><strong>0 of 0</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container offAtStart">
+            <table class="bordered">
+                <caption><strong>Found Words</strong></caption>
+                <tr>
+                    <td><div class="scrollX" id="answerText"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div id="revealedAnswerTable" class="w3-container offAtStart">
+            <table class="bordered">
+                <caption><strong>Missed Words</strong></caption>
+                <tr>
+                    <td><div class="scrollX" id="revealedAnswerText"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container onAtStartOnly" id="wordWhizRow1">
+            <table class="hex">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">H</div></td>
+                            </tr>
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">M</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">V</div></td>
+                            </tr>                            
+                            <tr>
+                                <td class="letterRow"><div class="goldImage letter">I</div></td>
+                            </tr>                            
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">N</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">E</div></td>
+                            </tr>                            
+                            <tr>
+                                <td class="letterRow"><div class="silvImage letter">D</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container offAtStart" id="definition">
+            <table class="bordered definition">
+                <caption><strong>Definition (Click an answer above)</strong></caption>
+                <tr>
+                    <td><div class="scrollY" id="definitionText"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container offAtStart" id="toastRow">
+            <table>
+                <tr>
+                    <td style="width: 100%;" id="toast" class="text fade"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container offAtStart" id="usedLetterRow">
+            <table>
+                <tr>
+                    <td id="guess" class="text"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container offAtStart" id="unusedLetterRow">
+            <table class="hex">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="unusedLetterRow1" class="letterRow" onclick="addLetter('unusedLetterRow1')"></td>
+                            </tr>
+                            <tr>
+                                <td id="unusedLetterRow2" class="letterRow" onclick="addLetter('unusedLetterRow2')"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="unusedLetterRow3" class="letterRow" onclick="addLetter('unusedLetterRow3')"></td>
+                            </tr>
+                            <tr>
+                                <td id="unusedLetterRow4" class="letterRow" onclick="addLetter('unusedLetterRow4')"></td>
+                            </tr>
+                            <tr>
+                                <td id="unusedLetterRow5" class="letterRow" onclick="addLetter('unusedLetterRow5')"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td id="unusedLetterRow6" class="letterRow" onclick="addLetter('unusedLetterRow6')"></td>
+                            </tr>
+                            <tr>
+                                <td id="unusedLetterRow7" class="letterRow" onclick="addLetter('unusedLetterRow7')"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container">
+            <table class="offAtStart gameButtons">
+                <tr>
+                    <td><button class="gameButton" id="soundButton" onclick="toggleSound(this)">Mute</button></td>
+                    <td><button class="gameButton" onclick="putLetterBack(this)">Backspace</button></td>
+                    <td><button class="gameButton" onclick="scramble(this)">Scramble</button></td>
+                    <td><button class="gameButton" onclick="submit(this)">Enter</button></td>
+                    <td><button class="gameButton" onclick="giveUp(this)">Give Up</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="offAtStart puzzleNumberRow" id="puzzleNumber"></div>
+        <div class="w3-container" id="linkedPuzzleRow">
+            <table class="bordered">
+                <caption>Challenge Detected!</caption>
+                <tr>
+                    <td class="challenge center">It looks like you were linked to a specific puzzle.<br>Click here to play that same one:<br><button onclick="linkedGame(this)">Linked<br>Puzzle</button</td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container">
+            <table class="onAtStartOnly newGame">
+                <tr>
+                    <td class="onAtStartOnly center"><button onclick="todaysGame(this)">Today's<br>Puzzle</button></td>
+                    <td class="onAtStartOnly center"><button onclick="newGame(this)">Random<br>Puzzle</button></td>
+                    <td class="offAtStart center"><button onclick="tweet(this, true)">Tweet<br>My Score</button></td>
+                    <td class="offAtStart center"><button onclick="backToHomeScreen(this)">Back to<br>Main Page</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container">
+            <table class="onAtStartOnly">
+                <tr>
+                    <td style="width: 100%">
+                        <a href="https://discord.gg/GsGfYS52Ty"><image src="images/social/discord.png"></a>
+                        <image src="images/social/twitter.png" onclick="tweet(this, false)" style="cursor: pointer">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://go1den.github.io/hivemind"><image src="images/social/facebook.png"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container onAtStartOnly" id="howToPlay">
+            <h3><strong>How to play:</strong></h3>
+            <p>Score points by making words using the tiles provided to you.<br>
+            You can use the same tile more than once, but you must <strong>always</strong> use the center tile in every word.<br>
+            Words must be between 4 and 17 letters.<br> 
+            Score 1 point for 4 letter words, and n points for n > 4 letter words.<br>
+            Score an extra 7 points if your word uses every letter at least once.<br>
+            <p><strong>Keyboard Shortcuts</strong></p>
+            <p>Type any letter to add it to the word.<br>
+            Space Bar - Shuffles the tiles in your tray.<br>
+            Backspace - Removes the last typed letter.<br>
+            Enter - Submits a guess, or types the last submitted guess automatically.</p>
+        </div>
+    </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    <script src="js/wordlist/a.js"></script>
+    <script src="js/wordlist/b.js"></script>
+    <script src="js/wordlist/c.js"></script>
+    <script src="js/wordlist/d.js"></script>
+    <script src="js/wordlist/e.js"></script>
+    <script src="js/wordlist/f.js"></script>
+    <script src="js/wordlist/g.js"></script>
+    <script src="js/wordlist/h.js"></script>
+    <script src="js/wordlist/i.js"></script>
+    <script src="js/wordlist/j.js"></script>
+    <script src="js/wordlist/k.js"></script>
+    <script src="js/wordlist/l.js"></script>
+    <script src="js/wordlist/m.js"></script>
+    <script src="js/wordlist/n.js"></script>
+    <script src="js/wordlist/o.js"></script>
+    <script src="js/wordlist/p.js"></script>
+    <script src="js/wordlist/q.js"></script>
+    <script src="js/wordlist/r.js"></script>
+    <script src="js/wordlist/s.js"></script>
+    <script src="js/wordlist/t.js"></script>
+    <script src="js/wordlist/u.js"></script>
+    <script src="js/wordlist/v.js"></script>
+    <script src="js/wordlist/w.js"></script>
+    <script src="js/wordlist/x.js"></script>
+    <script src="js/wordlist/y.js"></script>
+    <script src="js/wordlist/z.js"></script>
+    <script src="js/puzzles.js"></script>
+    <script src="js/seedrandom-min.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/dictionary.js"></script>
+    <script src="js/rank.js"></script>
+    <script src="js/hivemind.js"></script>
+    <script src="js/soundboard.js"></script>
+    <script src="js/pagemanager.js"></script>
+    <script src="js/main.js"></script>
+</html>
