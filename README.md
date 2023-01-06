@@ -1,5 +1,7 @@
-# Hive Mind
-Hive Mind is a (coming soon) free to play word game based on the popular NYT game Spelling Bee
+# Hive Mind on Stream!
+Hive Mind on Stream! is a (coming soon) free to play word game based on the popular NYT game Spelling Bee.
+
+This is a special version of the Hive Mind game built for playing in Twitch chats.
 
 Rank is based on % of total possible points:
 0% Beginner
